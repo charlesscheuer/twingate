@@ -19,6 +19,7 @@
   cursor: pointer; /* Cursor on hover */
   border-color: #121219;
   border: 4px solid #121219;
+  border-left: 8px solid #121219;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {

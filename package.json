@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "TAILWIND_MODE=watch postcss -i tailwind.css -o build.css --watch",
-    "build": "postcss -i tailwind.css -o build.css",
+    "build": "craco build",
     "start": "craco start",
     "test": "craco test",
     "eject": "react-scripts eject"
