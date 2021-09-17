@@ -1,14 +1,7 @@
 import React from "react";
-import LogScale from "log-scale";
 import RangeInput from "./RangeInput";
 
 export default function Slider(props) {
-  const logScale = new LogScale(0, 10000);
-  console.log(
-    logScale.linearToLogarithmic(props.users / 10000),
-    "linear users",
-    props.users
-  );
   return (
     <div>
       <div className="flex justify-between items-center mb-4">

@@ -39,7 +39,7 @@ export default function CostBreakdown(props) {
         </div>
       </div>
       {isOpen && [
-        <div className="flex justify-between items-center select-none ">
+        <div className="flex flex-col md:flex-row justify-between items-center select-none ">
           <QuantityToggle
             text={"Average number of clients"}
             toggleChanged={props.toggleChanged}
@@ -51,7 +51,7 @@ export default function CostBreakdown(props) {
             value={props.numEndpoints}
           />
         </div>,
-        <div className="flex justify-between items-center select-none ">
+        <div className="flex flex-col md:flex-row justify-between items-center select-none ">
           <QuantityToggle
             text={"Hours used per day"}
             toggleChanged={props.toggleChanged}
@@ -63,7 +63,7 @@ export default function CostBreakdown(props) {
             value={props.numAssociations}
           />
         </div>,
-        <div className="flex justify-between items-center select-none ">
+        <div className="flex flex-col md:flex-row justify-between items-center select-none ">
           <PriceDisplay
             text={"Cost per client hour"}
             value={props.clientHourCost}
@@ -73,7 +73,7 @@ export default function CostBreakdown(props) {
             value={props.associationHourCost}
           />
         </div>,
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-4">
           <PriceDisplay
             text={"AWS Connection Fees"}
             value={props.connectionFees}
