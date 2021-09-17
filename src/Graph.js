@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import LogScale from "log-scale";
 import twingateLogo from "./twingate-logo.png";
 import awsLogo from "./aws-logo.png";
@@ -11,6 +12,7 @@ export default function Graph(props) {
   const aws = logScale.logarithmicToLinear(awsTotal) * 100;
   const twingate = logScale.logarithmicToLinear(twingateTotal) * 100;
   // console.log(twingate, "is Value");
+  const twinWidth = twingate === 0 ? "100px" : `${twingate - 10}%`;
   return (
     <div className="w-full border border-border rounded-md mt-4 mb-4 transition duration-300 ease-in-out ">
       <div
@@ -36,24 +38,26 @@ export default function Graph(props) {
         </div>
       </div>
       <div className="bg-g-2 overflow-hidden py-8">
-        <div
-          style={{
-            width: `${aws}%`,
-            transition: "all .5s cubic-bezier(0.075, 0.82, 0.165, 1)",
-          }}
+        <motion.div
+          animate={{ width: `${aws}%` }}
+          layout
+          // transition={{ ease: "easeIn", duration: 1 }}
           className="bg-aws h-12 rounded-tr-md rounded-br-md  flex justify-between items-center"
         >
           <p className="ml-4 text-g-1">${Number(awsTotal).toLocaleString()}</p>
           <img src={awsLogo} alt="the aws logo" className="h-8 mr-4" />
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           style={{
-            width: `${twingate === 0 ? "100px" : `${twingate - 10}%`}`,
-            transition: "all .5s cubic-bezier(0.075, 0.82, 0.165, 1)",
+            // width: `${twingate === 0 ? "100px" : `${twingate - 10}%`}`,
+            // transition: "all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1)",
             minWidth: "100px",
             opacity: `${twingate === 0 ? 0.1 : 1}`,
           }}
+          layout
+          animate={{ width: twinWidth }}
+          // transition={{ ease: "easeIn", duration: 1 }}
           className="bg-primary mt-2 h-12 rounded-tr-md rounded-br-md flex justify-between items-center"
         >
           <p className="ml-4 text-g-1">
@@ -64,7 +68,7 @@ export default function Graph(props) {
             alt="the twingate logo"
             className="h-8 mr-4"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -19,11 +19,6 @@ export default function Calculator(props) {
   const [connectionFees, setConnectionFees] = useState(0);
 
   const logScale = new LogScale(0, 10000);
-  console.log(
-    logScale.linearToLogarithmic(props.users / 10000),
-    "linear users",
-    props.users
-  );
 
   const toggleChanged = (type, direction) => {
     if (type === "Average number of clients") {
@@ -67,6 +62,10 @@ export default function Calculator(props) {
 
   const handleUserSlide = (e) => {
     if (!isNaN(logScale.linearToLogarithmic(e.target.value / 10000))) {
+      console.log(
+        logScale.linearToLogarithmic(e.target.value / 10000),
+        "linear users"
+      );
       setUsers(logScale.linearToLogarithmic(e.target.value / 10000));
     }
   };
