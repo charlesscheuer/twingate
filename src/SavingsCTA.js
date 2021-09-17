@@ -17,7 +17,7 @@ export default function SavingsCTA(props) {
       <div className="w-1/2 flex flex-col items-start">
         <h3 className="text-dark font-medium">Total Annual Savings</h3>
         <p className="text-green text-left text-4xl font-bold leading-none">
-          ${Number(annualSavings).toLocaleString()}
+          ${twingateTotal === 0 ? "–" : Number(annualSavings).toLocaleString()}
         </p>
       </div>
       <button className="rounded-md bg-primary text-g-1 p-4">

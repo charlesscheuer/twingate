@@ -3,52 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 40px; /* Set a specific slider handle width */
-  height: 32px; /* Slider handle height */
-  background: #fff; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
-.slider::-moz-range-thumb {
-  width: 40px; /* Set a specific slider handle width */
-  height: 24px; /* Slider handle height */
-  background: #fff; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-  border-color: #121219;
-  border: 4px solid #121219;
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="range"] {
-    background-color: #eff0f3;
-  }
-
-  input[type="range"]::-webkit-slider-runnable-track {
-    height: 10px;
-    -webkit-appearance: none;
-    color: #eff0f3;
-    margin-top: -1px;
-  }
-}
-/** FF*/
-input[type="range"]::-moz-range-progress {
-  background-color: #121219;
-  height: 100%;
-}
-input[type="range"]::-moz-range-track {
-  background-color: #eff0f3;
-}
-/* IE*/
-input[type="range"]::-ms-fill-lower {
-  background-color: #121219;
-}
-input[type="range"]::-ms-fill-upper {
-  background-color: #121219;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -61,4 +15,99 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+input[type="range"] {
+  --thumbSize: 18px;
+  --thumbHeight: 40px;
+  --thumbWidth: 24px;
+  --trackSize: 32px;
+  --thumbBg: #fff;
+  --trackBg: #eff0f3;
+  --progressBg: #262b5a;
+  --borderRadius: 0.375rem;
+  /* webkit progress workaround */
+  --webkitProgressPercent: 0%;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: var(--thumbSize);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+
+/* Thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--thumbWidth);
+  height: var(--thumbHeight);
+  background-color: var(--thumbBg);
+  border-radius: 4px;
+  border: 2px solid var(--progressBg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin-top: -4px;
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  -moz-appearance: none;
+  appearance: none;
+  width: var(--thumbWidth);
+  height: var(--thumbHeight);
+  background-color: var(--thumbBg);
+  border-radius: 4px;
+  border: 2px solid var(--progressBg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin-top: -4px;
+  cursor: pointer;
+}
+input[type="range"]::-ms-thumb {
+  -ms-appearance: none;
+  appearance: none;
+  width: var(--thumbWidth);
+  height: var(--thumbHeight);
+  background-color: var(--thumbBg);
+  border-radius: 4px;
+  border: 2px solid var(--progressBg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  margin-top: -4px;
+  cursor: pointer;
+}
+
+/* Track */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: var(--trackSize);
+  border-radius: var(--borderRadius);
+  background-image: linear-gradient(
+    90deg,
+    var(--progressBg) var(--webkitProgressPercent),
+    var(--trackBg) var(--webkitProgressPercent)
+  );
+}
+input[type="range"]::-moz-range-track {
+  height: var(--trackSize);
+  background-color: var(--trackBg);
+  border-radius: var(--borderRadius);
+}
+input[type="range"]::-ms-track {
+  height: var(--trackSize);
+  background-color: var(--trackBg);
+  border-radius: var(--borderRadius);
+}
+
+/* Progress */
+input[type="range"]::-moz-range-progress {
+  height: var(--trackSize);
+  background-color: var(--progressBg);
+}
+input[type="range"]::-ms-fill-lower {
+  height: var(--trackSize);
+  background-color: var(--progressBg);
 }

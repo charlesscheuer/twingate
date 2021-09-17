@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import LogScale from "log-scale";
 import Slider from "./Slider";
 import CostBreakdown from "./CostBreakdown";
 import Graph from "./Graph";
@@ -17,6 +18,13 @@ export default function Calculator(props) {
   );
   const [connectionFees, setConnectionFees] = useState(0);
 
+  const logScale = new LogScale(0, 10000);
+  console.log(
+    logScale.linearToLogarithmic(props.users / 10000),
+    "linear users",
+    props.users
+  );
+
   const toggleChanged = (type, direction) => {
     if (type === "Average number of clients") {
       // if it is zero don't subract
@@ -34,7 +42,7 @@ export default function Calculator(props) {
 
     if (type === "Hours used per day") {
       // if it is zero don't subract
-      if (!(numHours + direction < 1)) {
+      if (!(numHours + direction < 1) && !(numHours + direction > 24)) {
         setNumHours(numHours + direction);
       }
     }
@@ -58,18 +66,20 @@ export default function Calculator(props) {
   };
 
   const handleUserSlide = (e) => {
-    setUsers(e.target.value);
+    if (!isNaN(logScale.linearToLogarithmic(e.target.value / 10000))) {
+      setUsers(logScale.linearToLogarithmic(e.target.value / 10000));
+    }
   };
 
   useEffect(() => {
-    console.log("reached me dude");
+    // console.log("reached me dude");
     setEndpointAssociationFees(
       numEndpoints * numAssociations * (24 * 30) * associationHourCost
     );
     setConnectionFees(users * numClients * numHours * 30 * clientHourCost);
   }, [numAssociations, numClients, numHours, numEndpoints, users]);
   //   console.log(endpointAssociationFees);
-  console.log(numEndpoints * numAssociations * (24 * 30) * associationHourCost);
+  // console.log(numEndpoints * numAssociations * (24 * 30) * associationHourCost);
   return (
     <div className="w-full">
       <h1 className="font-semibold text-left text-2xl mt-4  text-dark">

@@ -1,4 +1,5 @@
 import React from "react";
+import LogScale from "log-scale";
 import twingateLogo from "./twingate-logo.png";
 import awsLogo from "./aws-logo.png";
 
@@ -6,6 +7,10 @@ export default function Graph(props) {
   let twingateCost = props.users < 50 ? 5 : 10;
   let twingateTotal = twingateCost * props.users;
   let awsTotal = props.connectionFees + props.endpointAssociationFees;
+  const logScale = new LogScale(1, 400000);
+  const aws = logScale.logarithmicToLinear(awsTotal) * 100;
+  const twingate = logScale.logarithmicToLinear(twingateTotal) * 100;
+  // console.log(twingate, "is Value");
   return (
     <div className="w-full border border-border rounded-md mt-4 mb-4 transition duration-300 ease-in-out ">
       <div
@@ -33,8 +38,8 @@ export default function Graph(props) {
       <div className="bg-g-2 overflow-hidden py-8">
         <div
           style={{
-            width: 220 + awsTotal / 10,
-            transition: "all 1s cubic-bezier(0.075, 0.82, 0.165, 1);",
+            width: `${aws}%`,
+            transition: "all .5s cubic-bezier(0.075, 0.82, 0.165, 1)",
           }}
           className="bg-aws h-12 rounded-tr-md rounded-br-md  flex justify-between items-center"
         >
@@ -44,8 +49,10 @@ export default function Graph(props) {
 
         <div
           style={{
-            width: 220 + twingateTotal / 10,
-            transition: "all 1s cubic-bezier(0.075, 0.82, 0.165, 1);",
+            width: `${twingate === 0 ? "100px" : `${twingate - 10}%`}`,
+            transition: "all .5s cubic-bezier(0.075, 0.82, 0.165, 1)",
+            minWidth: "100px",
+            opacity: `${twingate === 0 ? 0.1 : 1}`,
           }}
           className="bg-primary mt-2 h-12 rounded-tr-md rounded-br-md flex justify-between items-center"
         >

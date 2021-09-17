@@ -8,7 +8,12 @@ export default function CostBreakdown(props) {
   // array of toggles which are objects that have key with their type, key with text to include and their current value
 
   return (
-    <div className="w-full border border-border rounded-md mt-4 mb-4 transition duration-300 ease-in-out ">
+    <div
+      className="w-full border border-border rounded-md mt-4 mb-4"
+      style={{
+        transition: "all 1s cubic-bezier(0.075, 0.82, 0.165, 1)",
+      }}
+    >
       <div
         className={
           "flex justify-between items-center px-4 py-4 bg-g-2 cursor-pointer h-16"
@@ -34,7 +39,7 @@ export default function CostBreakdown(props) {
         </div>
       </div>
       {isOpen && [
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center select-none ">
           <QuantityToggle
             text={"Average number of clients"}
             toggleChanged={props.toggleChanged}
@@ -46,7 +51,7 @@ export default function CostBreakdown(props) {
             value={props.numEndpoints}
           />
         </div>,
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center select-none ">
           <QuantityToggle
             text={"Hours used per day"}
             toggleChanged={props.toggleChanged}
@@ -58,7 +63,7 @@ export default function CostBreakdown(props) {
             value={props.numAssociations}
           />
         </div>,
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center select-none ">
           <PriceDisplay
             text={"Cost per client hour"}
             value={props.clientHourCost}
