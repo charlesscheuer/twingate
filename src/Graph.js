@@ -56,7 +56,9 @@ export default function Graph(props) {
             opacity: `${twingate === 0 ? 0.1 : 1}`,
           }}
           layout
-          animate={{ width: twinWidth }}
+          animate={{
+            width: twinWidth < aws ? `${twinWidth - 10}%` : twinWidth,
+          }}
           // transition={{ ease: "easeIn", duration: 1 }}
           className="bg-primary mt-2 h-12 rounded-tr-md rounded-br-md flex justify-between items-center"
         >

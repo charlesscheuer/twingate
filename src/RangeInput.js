@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import LogScale from "log-scale";
 
 const RangeInput = (props) => {
   const inputRef = useRef();
@@ -13,6 +14,7 @@ const RangeInput = (props) => {
   const min = 0;
   const max = 10000;
   const step = 1;
+  const logScale = new LogScale(0, 10000);
 
   const getPercent = useMemo(
     () => (value) => {
@@ -37,6 +39,8 @@ const RangeInput = (props) => {
 
     inputElement.addEventListener("mousemove", changeInputProgressPercentStyle);
     inputElement.addEventListener("mousedown", handleDown);
+    inputElement.addEventListener("dragstart", handleDown);
+    inputElement.addEventListener("dragend", handleUpAndLeave);
     inputElement.addEventListener("mouseup", handleUpAndLeave);
     inputElement.addEventListener("mouseleave", handleUpAndLeave);
     return () => {

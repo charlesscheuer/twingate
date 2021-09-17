@@ -8,7 +8,7 @@ import SavingsCTA from "./SavingsCTA";
 export default function Calculator(props) {
   const clientHourCost = 0.05;
   const associationHourCost = 0.15;
-  const [users, setUsers] = useState(100);
+  const [users, setUsers] = useState(25);
   const [numClients, setNumClients] = useState(1);
   const [numEndpoints, setNumEndpoints] = useState(2);
   const [numHours, setNumHours] = useState(8);
