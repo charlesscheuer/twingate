@@ -69,6 +69,9 @@ export default function Graph(props) {
         <motion.div
           animate={{ width: `${getAwsWidth()}%` }}
           layout
+          style={{
+            minWidth: "116px",
+          }}
           // transition={{ ease: "easeIn", duration: 1 }}
           className="bg-aws h-12 rounded-tr-md rounded-br-md  flex justify-between items-center"
         >
