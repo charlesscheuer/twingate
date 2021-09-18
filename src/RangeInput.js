@@ -1,7 +1,7 @@
 import React, {
   useCallback,
   useEffect,
-  useMemo,
+  //   useMemo,
   useRef,
   useState,
 } from "react";
@@ -14,21 +14,15 @@ const RangeInput = (props) => {
   const min = 0;
   const max = 10000;
   const step = 1;
-  const logScale = new LogScale(0, 10000);
-
-  const getPercent = useMemo(
-    () => (value) => {
-      return ((value - min) / (max - min)) * 100;
-    },
-    [max, min]
-  );
 
   const changeInputProgressPercentStyle = useCallback(() => {
+    const logScale = new LogScale(0, 10000);
+    // console.log("ran change %%%", logScale.logarithmicToLinear(props.users));
     inputRef.current.style.setProperty(
       "--webkitProgressPercent",
-      `${getPercent(inputRef.current.value)}%`
+      `${logScale.logarithmicToLinear(props.users)}%`
     );
-  }, [getPercent]);
+  }, [props.users]);
 
   useEffect(() => {
     changeInputProgressPercentStyle();
@@ -69,7 +63,7 @@ const RangeInput = (props) => {
       defaultValue={props.users}
       onChange={(e) => props.handleUserSlide(e)}
       onMouseUp={(e) => props.onMouseUp(e)}
-      className="range w-full h-[40px] outline-none rounded-md slider"
+      className="range w-full h-[40px] outline-none  slider"
       id="myRange"
     />
   );

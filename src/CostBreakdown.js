@@ -17,7 +17,7 @@ export default function CostBreakdown(props) {
     >
       <div
         className={
-          "flex justify-between items-center px-4 py-4 bg-g-2 cursor-pointer h-16"
+          "flex justify-between items-center px-4 py-4  cursor-pointer h-16"
         }
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -39,7 +39,7 @@ export default function CostBreakdown(props) {
           +
         </div>
       </div>
-      <motion.div layout className="div">
+      <motion.div layout className="div bg-g-2">
         {isOpen && [
           <div className="flex flex-col md:flex-row justify-between items-center select-none ">
             <QuantityToggle
@@ -75,7 +75,7 @@ export default function CostBreakdown(props) {
               value={props.associationHourCost}
             />
           </div>,
-          <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-center pb-4">
             <PriceDisplay
               text={"AWS Connection Fees"}
               value={props.connectionFees}

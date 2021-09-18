@@ -9,9 +9,11 @@ module.exports = {
       "g-1": "#Ffffff",
       "g-2": "#EFF0F3",
       "g-3": "#656568",
+      "g-4": "#dbdce4",
       "border": "#e7e8eb",
       "aws": "#DE8918",
       "primary": "#283DF3", // Primary
+      "primaryHover": "#172dbd",
       "green": "#368864",
       "dark": "#121219",
       "transparent": "transparent",

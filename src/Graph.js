@@ -8,11 +8,40 @@ export default function Graph(props) {
   let twingateCost = props.users < 50 ? 5 : 10;
   let twingateTotal = twingateCost * props.users;
   let awsTotal = props.connectionFees + props.endpointAssociationFees;
+
   const logScale = new LogScale(1, 400000);
-  const aws = logScale.logarithmicToLinear(awsTotal) * 100;
-  const twingate = logScale.logarithmicToLinear(twingateTotal) * 100;
-  // console.log(twingate, "is Value");
-  const twinWidth = twingate === 0 ? "100px" : `${twingate - 10}%`;
+
+  // console.log(aws, "aws width", "twingate::", twingate);
+
+  const getAwsWidth = () => {
+    const aws = logScale.logarithmicToLinear(awsTotal) * 100;
+    if (awsTotal < twingateTotal) {
+      console.log("reached the  less than case for AWWWS");
+      return `${aws - 10}%`;
+    } else {
+      console.log("reached the GREATER than case for AWWWS");
+      return `${aws}%`;
+    }
+  };
+
+  const getTwingateWidth = () => {
+    const twingate = logScale.logarithmicToLinear(twingateTotal) * 100;
+    // console.log(twingate, "is Value for twingate");
+
+    // if twingate is less subtract 10%;
+    console.log(twingateCost, "is twingate cost", twingateTotal, "is total");
+    if (twingateTotal === 0) {
+      console.log("reached the zero case");
+      return "100px";
+    } else if (twingateTotal < awsTotal) {
+      console.log("reached the  less than case");
+      return `${twingate - 10}%`;
+    } else {
+      console.log("reached the just return value case, ", twingate);
+      return `${twingate}%`;
+    }
+  };
+
   return (
     <div className="w-full border border-border rounded-md mt-4 mb-4 transition duration-300 ease-in-out ">
       <div
@@ -39,7 +68,7 @@ export default function Graph(props) {
       </div>
       <div className="bg-g-2 overflow-hidden py-8">
         <motion.div
-          animate={{ width: `${aws}%` }}
+          animate={{ width: getAwsWidth() }}
           layout
           // transition={{ ease: "easeIn", duration: 1 }}
           className="bg-aws h-12 rounded-tr-md rounded-br-md  flex justify-between items-center"
@@ -53,11 +82,11 @@ export default function Graph(props) {
             // width: `${twingate === 0 ? "100px" : `${twingate - 10}%`}`,
             // transition: "all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1)",
             minWidth: "100px",
-            opacity: `${twingate === 0 ? 0.1 : 1}`,
+            opacity: `${twingateCost === 0 ? 0.1 : 1}`,
           }}
           layout
           animate={{
-            width: twinWidth < aws ? `${twinWidth - 10}%` : twinWidth,
+            width: getTwingateWidth(),
           }}
           // transition={{ ease: "easeIn", duration: 1 }}
           className="bg-primary mt-2 h-12 rounded-tr-md rounded-br-md flex justify-between items-center"

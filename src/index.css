@@ -23,9 +23,9 @@ input[type="range"] {
   --thumbWidth: 24px;
   --trackSize: 32px;
   --thumbBg: #fff;
-  --trackBg: #eff0f3;
+  --trackBg: #dbdce4;
   --progressBg: #262b5a;
-  --borderRadius: 0.375rem;
+  --borderRadius: 0;
   /* webkit progress workaround */
   --webkitProgressPercent: 0%;
 }

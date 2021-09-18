@@ -14,7 +14,7 @@ export default function SavingsCTA(props) {
     }
   }, [totalMonthlySavings]);
 
-  console.log(annualSavings, "is annual");
+  // console.log(annualSavings, "is annual");
   return (
     <div className="flex justify-between items-center my-4">
       <div className="w-1/2 flex flex-col items-start">
@@ -24,7 +24,7 @@ export default function SavingsCTA(props) {
           <Odometer value={annualSavings} format="(,ddd)" />
         </div>
       </div>
-      <button className="rounded-md bg-primary text-g-1 p-4">
+      <button className="rounded-md bg-primary text-g-1 p-4 hover:bg-primaryHover transition-all duration-100 ease-in">
         {" "}
         Request a demo
       </button>
