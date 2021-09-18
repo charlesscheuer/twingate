@@ -17,10 +17,12 @@ export default function Graph(props) {
     const aws = logScale.logarithmicToLinear(awsTotal) * 100;
     if (awsTotal < twingateTotal) {
       console.log("reached the  less than case for AWWWS");
-      return `${aws - 10}%`;
+
+      // try percentage of the other width
+      return (awsTotal / twingateTotal) * getTwingateWidth();
     } else {
       console.log("reached the GREATER than case for AWWWS");
-      return `${aws}%`;
+      return aws;
     }
   };
 
@@ -30,15 +32,12 @@ export default function Graph(props) {
 
     // if twingate is less subtract 10%;
     console.log(twingateCost, "is twingate cost", twingateTotal, "is total");
-    if (twingateTotal === 0) {
-      console.log("reached the zero case");
-      return "100px";
-    } else if (twingateTotal < awsTotal) {
+    if (twingateTotal < awsTotal) {
       console.log("reached the  less than case");
-      return `${twingate - 10}%`;
+      return (twingateTotal / awsTotal) * getAwsWidth();
     } else {
       console.log("reached the just return value case, ", twingate);
-      return `${twingate}%`;
+      return twingate;
     }
   };
 
@@ -68,7 +67,7 @@ export default function Graph(props) {
       </div>
       <div className="bg-g-2 overflow-hidden py-8">
         <motion.div
-          animate={{ width: getAwsWidth() }}
+          animate={{ width: `${getAwsWidth()}%` }}
           layout
           // transition={{ ease: "easeIn", duration: 1 }}
           className="bg-aws h-12 rounded-tr-md rounded-br-md  flex justify-between items-center"
@@ -82,11 +81,11 @@ export default function Graph(props) {
             // width: `${twingate === 0 ? "100px" : `${twingate - 10}%`}`,
             // transition: "all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1)",
             minWidth: "100px",
-            opacity: `${twingateCost === 0 ? 0.1 : 1}`,
+            opacity: `${twingateTotal === 0 ? 0.1 : 1}`,
           }}
           layout
           animate={{
-            width: getTwingateWidth(),
+            width: `${getTwingateWidth()}%`,
           }}
           // transition={{ ease: "easeIn", duration: 1 }}
           className="bg-primary mt-2 h-12 rounded-tr-md rounded-br-md flex justify-between items-center"
