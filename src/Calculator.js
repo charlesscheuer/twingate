@@ -20,6 +20,8 @@ export default function Calculator(props) {
 
   const logScale = new LogScale(0, 10000);
 
+  
+
   const toggleChanged = (type, direction) => {
     if (type === "Average number of clients") {
       // if it is zero don't subract
