@@ -10,14 +10,14 @@ export default function CostBreakdown(props) {
 
   return (
     <motion.div
-      className="w-full border border-border rounded-md mt-4 mb-4"
+      className="w-full bg-g-2 rounded-md mt-10 mb-4"
       style={{
         transition: "all 1s cubic-bezier(0.075, 0.82, 0.165, 1)",
       }}
     >
       <div
         className={
-          "flex justify-between items-center px-4 py-4  cursor-pointer h-16"
+          "flex justify-between items-center px-4  cursor-pointer h-12"
         }
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -32,14 +32,27 @@ export default function CostBreakdown(props) {
             },
           }}
           className={
-            "transition duration-200 ease-in-out selection:bg-transparent text-xl select-none " +
+            "transition duration-200 rounded-full ease-in-out selection:bg-transparent text-2xl select-none font-semibold origin-center" +
             (isOpen && "transform rotate-45 ")
           }
         >
-          +
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            className=""
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
         </div>
       </div>
-      <motion.div layout className="div bg-g-2">
+      <motion.div className="div bg-g-1">
         {isOpen && [
           <div className="flex flex-col md:flex-row justify-between items-center select-none ">
             <QuantityToggle

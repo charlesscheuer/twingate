@@ -42,10 +42,10 @@ export default function Graph(props) {
   };
 
   return (
-    <div className="w-full border border-border rounded-md mt-4 mb-4 transition duration-300 ease-in-out ">
+    <div className="w-full rounded-md mt-4 mb-8 transition duration-300 ease-in-out ">
       <div
         className={
-          "flex justify-between items-center px-4 py-4 cursor-pointer "
+          "flex px-4 justify-between items-center py-0 cursor-pointer "
         }
       >
         <h3 className="text-dark font-medium">Total Cost</h3>
@@ -65,7 +65,7 @@ export default function Graph(props) {
           +
         </div>
       </div>
-      <div className="bg-g-2 overflow-hidden py-8">
+      <div className="bg-g-1 overflow-hidden pt-2">
         <motion.div
           animate={{ width: `${getAwsWidth()}%` }}
           layout

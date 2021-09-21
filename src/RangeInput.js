@@ -50,6 +50,7 @@ const RangeInput = (props) => {
 
   useEffect(() => {
     if (!inputRef?.current) return;
+    // setIsLoaded(true);
     changeInputProgressPercentStyle();
   }, [inputRef, changeInputProgressPercentStyle]);
 
@@ -63,7 +64,7 @@ const RangeInput = (props) => {
       defaultValue={props.users}
       onChange={(e) => props.handleUserSlide(e)}
       onMouseUp={(e) => props.onMouseUp(e)}
-      className="range w-full h-[40px] outline-none  slider"
+      className="range w-full  outline-none  slider"
       id="myRange"
     />
   );

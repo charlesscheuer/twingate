@@ -20,8 +20,6 @@ export default function Calculator(props) {
 
   const logScale = new LogScale(0, 10000);
 
-  
-
   const toggleChanged = (type, direction) => {
     if (type === "Average number of clients") {
       // if it is zero don't subract
@@ -63,12 +61,22 @@ export default function Calculator(props) {
   };
 
   const handleUserSlide = (e) => {
-    if (!isNaN(logScale.linearToLogarithmic(e.target.value / 10000))) {
+    console.log("reachchchahdhdhah", e);
+    if (!e.target) {
+      const newTarg = e;
       console.log(
-        logScale.linearToLogarithmic(e.target.value / 10000),
-        "linear users"
+        logScale.linearToLogarithmic(newTarg / 10000),
+        "should be the new value"
       );
-      setUsers(logScale.linearToLogarithmic(e.target.value / 10000));
+      setUsers(logScale.linearToLogarithmic(newTarg / 10000));
+    } else {
+      if (!isNaN(logScale.linearToLogarithmic(e.target.value / 10000))) {
+        console.log(
+          logScale.linearToLogarithmic(e.target.value / 10000),
+          "linear users"
+        );
+        setUsers(logScale.linearToLogarithmic(e.target.value / 10000));
+      }
     }
   };
 
@@ -83,21 +91,23 @@ export default function Calculator(props) {
   // console.log(numEndpoints * numAssociations * (24 * 30) * associationHourCost);
   return (
     <div className="w-full">
-      <h1 className="font-semibold text-left text-2xl mt-4  text-dark">
+      <h1 className="font-semibold  px-4 text-left text-2xl mt-4  text-dark">
         Cost Calculator
       </h1>
       <Slider handleUserSlide={handleUserSlide} users={users} />
-      <CostBreakdown
-        toggleChanged={toggleChanged}
-        numAssociations={numAssociations}
-        numClients={numClients}
-        numEndpoints={numEndpoints}
-        numHours={numHours}
-        clientHourCost={clientHourCost}
-        associationHourCost={associationHourCost}
-        connectionFees={connectionFees}
-        endpointAssociationFees={endpointAssociationFees}
-      />
+      <div className="px-4">
+        <CostBreakdown
+          toggleChanged={toggleChanged}
+          numAssociations={numAssociations}
+          numClients={numClients}
+          numEndpoints={numEndpoints}
+          numHours={numHours}
+          clientHourCost={clientHourCost}
+          associationHourCost={associationHourCost}
+          connectionFees={connectionFees}
+          endpointAssociationFees={endpointAssociationFees}
+        />
+      </div>
       <Graph
         users={users}
         connectionFees={connectionFees}

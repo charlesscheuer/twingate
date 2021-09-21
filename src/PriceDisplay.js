@@ -9,8 +9,8 @@ export default function PriceDisplay(props) {
       <div
         className={
           props.text.includes("AWS")
-            ? "flex min-w-[80px] justify-center border-2  text-aws border-aws rounded-md ml-4"
-            : "flex min-w-[80px] justify-center bg-g-4 rounded-md ml-4"
+            ? "flex min-w-[80px] justify-center  text-aws rounded-md ml-4"
+            : "flex min-w-[80px] justify-center bg-g-2 rounded-md ml-4"
         }
       >
         <p
@@ -20,7 +20,12 @@ export default function PriceDisplay(props) {
               : "text-dark py-2 select-none  font-semibold"
           }
         >
-          ${Number(props.value).toLocaleString()}
+          $
+          {Number(props.value).toLocaleString("en-US", {
+            style: "decimal",
+            maximumFractionDigits: props.text.includes("AWS") ? 0 : 2,
+            minimumFractionDigits: 0,
+          })}
         </p>
       </div>
     </div>

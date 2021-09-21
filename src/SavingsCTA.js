@@ -11,17 +11,23 @@ export default function SavingsCTA(props) {
   useEffect(() => {
     if (totalMonthlySavings > 0) {
       setAnnualSavings(totalMonthlySavings * 12);
+    } else {
+      setAnnualSavings(0);
     }
   }, [totalMonthlySavings]);
 
   // console.log(annualSavings, "is annual");
   return (
-    <div className="flex justify-between items-center my-4">
+    <div className="flex justify-between items-center px-4 my-4">
       <div className="w-1/2 flex flex-col items-start">
         <h3 className="text-dark font-medium">Total Annual Savings</h3>
         <div className="flex justify-start text-green font-bold">
           $
-          <Odometer value={annualSavings} format="(,ddd)" />
+          {totalMonthlySavings > 0 ? (
+            <Odometer value={annualSavings} format="(,ddd)" />
+          ) : (
+            <p>–</p>
+          )}
         </div>
       </div>
       <button className="rounded-md bg-primary text-g-1 p-4 hover:bg-primaryHover transition-all duration-100 ease-in">

@@ -16,7 +16,7 @@ function App() {
           handy AWS VPN Pricing Calculator.
         </p>
       </div>
-      <div className="max-w-[724px] w-full mt-8 px-4 border border-border rounded-md transition-all duration-300 ease-in-out">
+      <div className="max-w-[724px] w-full mt-8 border border-border rounded-md transition-all duration-300 ease-in-out">
         <Calculator />
       </div>
       <div className="max-w-[724px] mt-8 px-4">
