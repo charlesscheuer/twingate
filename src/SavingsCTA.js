@@ -16,22 +16,23 @@ export default function SavingsCTA(props) {
     }
   }, [totalMonthlySavings]);
 
+  const getDollarAmount = () => {
+    if (totalMonthlySavings > 0) {
+      return (
+        <Odometer className="font-sans" value={annualSavings} format="(,ddd)" />
+      );
+    } else {
+      return <p>–</p>;
+    }
+  };
+
   // console.log(annualSavings, "is annual");
   return (
-    <div className="flex justify-between items-center px-4 my-4">
+    <div className="flex justify-between border-border border-t items-center px-4 py-4">
       <div className="w-1/2 flex flex-col items-start">
         <h3 className="text-dark font-medium">Total Annual Savings</h3>
         <div className="flex justify-start text-green font-bold font-sans">
-          $
-          {totalMonthlySavings > 0 ? (
-            <Odometer
-              className="font-sans"
-              value={annualSavings}
-              format="(,ddd)"
-            />
-          ) : (
-            <p>–</p>
-          )}
+          ${getDollarAmount()}
         </div>
       </div>
       <button className="rounded-md bg-primary text-g-1 p-4 hover:bg-primaryHover transition-all duration-100 ease-in">

@@ -2,7 +2,11 @@ import React from "react";
 
 export default function PriceDisplay(props) {
   return (
-    <div className={"flex px-4 w-full items-center justify-between mt-4"}>
+    <div
+      className={`flex w-full items-center justify-between mt-4 ${
+        props.second && "md:ml-8"
+      }`}
+    >
       <p className={props.text.includes("AWS") ? "text-aws" : "text-g-3"}>
         {props.text}
       </p>

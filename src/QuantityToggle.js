@@ -2,7 +2,11 @@ import React from "react";
 
 export default function QuantityToggle(props) {
   return (
-    <div className="flex px-4 w-full items-center justify-between mt-4">
+    <div
+      className={`flex w-full items-center justify-between mt-4 ${
+        props.second && "md:ml-8"
+      }`}
+    >
       <p className="text-g-3">{props.text}</p>
       <div className="flex min-w-[80px] justify-around bg-g-2 w-16 rounded-md ml-4">
         <p
