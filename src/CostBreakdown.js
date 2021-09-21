@@ -10,18 +10,19 @@ export default function CostBreakdown(props) {
 
   return (
     <motion.div
-      className="w-full bg-g-2 rounded-md mt-10 mb-4"
+      className="w-fullrounded-md mt-10 mb-4"
       style={{
         transition: "all 1s cubic-bezier(0.075, 0.82, 0.165, 1)",
       }}
     >
       <div
-        className={
-          "flex justify-between items-center px-4  cursor-pointer h-12"
-        }
+        className={"flex justify-start items-center cursor-pointer h-12"}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className="text-dark font-medium select-none">Cost Breakdown</h3>
+        <h3 className="text-dark font-medium select-none mr-4">
+          Cost Breakdown
+        </h3>
+
         <div
           style={{
             "::selection": {
@@ -33,22 +34,22 @@ export default function CostBreakdown(props) {
           }}
           className={
             "transition duration-200 rounded-full ease-in-out selection:bg-transparent text-2xl select-none font-semibold origin-center" +
-            (isOpen && "transform rotate-45 ")
+            (isOpen && "transform rotate-180 ")
           }
         >
           <svg
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            stroke="currentColor"
-            stroke-width="2"
+            width="13"
+            height="8"
+            viewBox="0 0 13 8"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            className=""
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M6.51459 5.42426L11.4843 0.45459L12.5449 1.51525L6.51459 7.54558L0.484262 1.51525L1.54492 0.454589L6.51459 5.42426Z"
+              fill="#363638"
+            />
           </svg>
         </div>
       </div>

@@ -21,10 +21,14 @@ export default function SavingsCTA(props) {
     <div className="flex justify-between items-center px-4 my-4">
       <div className="w-1/2 flex flex-col items-start">
         <h3 className="text-dark font-medium">Total Annual Savings</h3>
-        <div className="flex justify-start text-green font-bold">
+        <div className="flex justify-start text-green font-bold font-sans">
           $
           {totalMonthlySavings > 0 ? (
-            <Odometer value={annualSavings} format="(,ddd)" />
+            <Odometer
+              className="font-sans"
+              value={annualSavings}
+              format="(,ddd)"
+            />
           ) : (
             <p>–</p>
           )}
