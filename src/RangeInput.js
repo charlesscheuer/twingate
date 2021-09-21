@@ -33,8 +33,8 @@ const RangeInput = (props) => {
 
     inputElement.addEventListener("mousemove", changeInputProgressPercentStyle);
     inputElement.addEventListener("mousedown", handleDown);
-    inputElement.addEventListener("dragstart", handleDown);
-    inputElement.addEventListener("dragend", handleUpAndLeave);
+    // inputElement.addEventListener("dragstart", handleDown);
+    // inputElement.addEventListener("dragend", handleUpAndLeave);
     inputElement.addEventListener("mouseup", handleUpAndLeave);
     inputElement.addEventListener("mouseleave", handleUpAndLeave);
     return () => {

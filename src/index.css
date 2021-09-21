@@ -95,7 +95,7 @@ input[type="range"]::-ms-thumb {
 /* Track */
 input[type="range"]::-webkit-slider-runnable-track {
   height: 40px;
-  border-radius: 100px;
+  /* border-radius: px; */
   width: 100%;
   background-image: linear-gradient(
     90deg,
