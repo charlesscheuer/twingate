@@ -10,7 +10,7 @@ export default function CostBreakdown(props) {
 
   return (
     <motion.div
-      className="w-fullrounded-md mt-10 mb-4"
+      className="w-fullrounded-md mt-4 mb-0"
       style={{
         transition: "all 1s cubic-bezier(0.075, 0.82, 0.165, 1)",
       }}
@@ -19,7 +19,7 @@ export default function CostBreakdown(props) {
         className={"flex justify-start items-center cursor-pointer h-12"}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className="text-dark font-medium select-none mr-4">
+        <h3 className="text-dark font-medium select-none mr-2">
           Cost Breakdown
         </h3>
 

@@ -2,7 +2,7 @@ module.exports = {
   mode: "jit",
   // These paths are just examples, customize them to match your project structure
   purge: ["./public/index.html", "./src/*.{js,jsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false, // or 'media' or 'clas
   theme: {
     colors: {
       // (greyscale)

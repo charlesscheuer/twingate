@@ -61,20 +61,20 @@ export default function Calculator(props) {
   };
 
   const handleUserSlide = (e) => {
-    console.log("reachchchahdhdhah", e);
+    // console.log("reachchchahdhdhah", e);
     if (!e.target) {
       const newTarg = e;
-      console.log(
-        logScale.linearToLogarithmic(newTarg / 10000),
-        "should be the new value"
-      );
+      // console.log(
+      //   logScale.linearToLogarithmic(newTarg / 10000),
+      //   "should be the new value"
+      // );
       setUsers(logScale.linearToLogarithmic(newTarg / 10000));
     } else {
       if (!isNaN(logScale.linearToLogarithmic(e.target.value / 10000))) {
-        console.log(
-          logScale.linearToLogarithmic(e.target.value / 10000),
-          "linear users"
-        );
+        // console.log(
+        //   logScale.linearToLogarithmic(e.target.value / 10000),
+        //   "linear users"
+        // );
         setUsers(logScale.linearToLogarithmic(e.target.value / 10000));
       }
     }

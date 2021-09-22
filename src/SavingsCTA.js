@@ -17,12 +17,40 @@ export default function SavingsCTA(props) {
   }, [totalMonthlySavings]);
 
   const getDollarAmount = () => {
+    // 2 comma club: 1000000
+    console.log("got dollar", totalMonthlySavings);
     if (totalMonthlySavings > 0) {
-      return (
-        <Odometer className="font-sans" value={annualSavings} format="(,ddd)" />
-      );
+      if (annualSavings > 1000000) {
+        return [
+          <p className="h-8 block md:hidden" style={{ fontSize: 32 }}>
+            {Number(annualSavings / 1000000).toLocaleString("en-US", {
+              style: "decimal",
+              maximumFractionDigits: 2,
+              minimumFractionDigits: 0,
+            })}
+            M
+          </p>,
+          <div className="h-8 hidden md:block font-sans">
+            <Odometer value={annualSavings} format="(,ddd)" />
+          </div>,
+        ];
+      } else
+        return (
+          <Odometer
+            className="font-sans h-8"
+            value={annualSavings}
+            format="(,ddd)"
+          />
+        );
     } else {
-      return <p>–</p>;
+      return (
+        <div
+          className="align-text-top align-top font-sans h-8 flex items-start"
+          style={{ fontSize: 32 }}
+        >
+          –
+        </div>
+      );
     }
   };
 
@@ -31,11 +59,11 @@ export default function SavingsCTA(props) {
     <div className="flex justify-between border-border border-t items-center px-4 py-4">
       <div className="w-1/2 flex flex-col items-start">
         <h3 className="text-dark font-medium">Total Annual Savings</h3>
-        <div className="flex justify-start text-green font-bold font-sans">
+        <div className="flex justify-start text-green font-bold font-sans items-start">
           ${getDollarAmount()}
         </div>
       </div>
-      <button className="rounded-md bg-primary text-g-1 p-4 hover:bg-primaryHover transition-all duration-100 ease-in">
+      <button className="rounded-xl bg-primary text-g-1 p-4 hover:bg-primaryHover font-medium transition-all duration-100 ease-in">
         {" "}
         Request a demo
       </button>

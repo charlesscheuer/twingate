@@ -16,12 +16,12 @@ export default function Graph(props) {
   const getAwsWidth = () => {
     const aws = logScale.logarithmicToLinear(awsTotal) * 100;
     if (awsTotal < twingateTotal) {
-      console.log("reached the  less than case for AWWWS");
+      // console.log("reached the  less than case for AWWWS");
 
       // try percentage of the other width
       return (awsTotal / twingateTotal) * getTwingateWidth();
     } else {
-      console.log("reached the GREATER than case for AWWWS");
+      // console.log("reached the GREATER than case for AWWWS");
       return aws;
     }
   };
@@ -31,21 +31,21 @@ export default function Graph(props) {
     // console.log(twingate, "is Value for twingate");
 
     // if twingate is less subtract 10%;
-    console.log(twingateCost, "is twingate cost", twingateTotal, "is total");
+    // console.log(twingateCost, "is twingate cost", twingateTotal, "is total");
     if (twingateTotal < awsTotal) {
-      console.log("reached the  less than case");
+      // console.log("reached the  less than case");
       return (twingateTotal / awsTotal) * getAwsWidth();
     } else {
-      console.log("reached the just return value case, ", twingate);
+      // console.log("reached the just return value case, ", twingate);
       return twingate;
     }
   };
 
   return (
-    <div className="w-full rounded-md mt-4 mb-8 transition duration-300 ease-in-out ">
+    <div className="w-full rounded-md mb-8 transition duration-300 ease-in-out ">
       <div
         className={
-          "flex px-4 justify-between items-center py-0 cursor-pointer "
+          "flex px-4 justify-between items-center h-12 cursor-pointer "
         }
       >
         <h3 className="text-dark font-medium">Total Cost</h3>
