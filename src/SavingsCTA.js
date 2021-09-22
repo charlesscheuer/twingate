@@ -36,11 +36,9 @@ export default function SavingsCTA(props) {
         ];
       } else
         return (
-          <Odometer
-            className="font-sans h-8"
-            value={annualSavings}
-            format="(,ddd)"
-          />
+          <div className="h-8 hidden md:block font-sans">
+            <Odometer value={annualSavings} format="(,ddd)" />
+          </div>
         );
     } else {
       return (
