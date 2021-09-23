@@ -53,7 +53,7 @@ export default function CostBreakdown(props) {
           </svg>
         </div>
       </div>
-      <motion.div className="div bg-g-1">
+      <motion.div className="div bg-g-1 hidden md:block">
         {isOpen && [
           <div className="flex flex-col md:flex-row justify-between items-center select-none ">
             <QuantityToggle
@@ -103,6 +103,61 @@ export default function CostBreakdown(props) {
               text={"AWS Connection Fees"}
               key={"AWS FEE"}
               value={props.connectionFees}
+            />
+            <PriceDisplay
+              text={"AWS Endpoint Fees"}
+              key={"AWS Endpoint fee"}
+              value={props.endpointAssociationFees}
+              second={true}
+            />
+          </div>,
+        ]}
+      </motion.div>
+      <motion.div className="div bg-g-1 block md:hidden">
+        {isOpen && [
+          <div className="flex flex-col md:flex-row justify-between items-center select-none ">
+            <QuantityToggle
+              text={"Average number of clients"}
+              key={"Average number of clients"}
+              toggleChanged={props.toggleChanged}
+              value={props.numClients}
+            />
+            <QuantityToggle
+              text={"Hours used per day"}
+              key={"Hours"}
+              toggleChanged={props.toggleChanged}
+              value={props.numHours}
+            />
+            <PriceDisplay
+              text={"Cost per client hour"}
+              key={"Cost per client hour"}
+              value={props.clientHourCost}
+            />
+
+            <PriceDisplay
+              text={"AWS Connection Fees"}
+              key={"AWS FEE"}
+              value={props.connectionFees}
+            />
+            <QuantityToggle
+              text={"Endpoints"}
+              key={"Endpoints"}
+              toggleChanged={props.toggleChanged}
+              value={props.numEndpoints}
+              second={true}
+            />
+            <QuantityToggle
+              text={"Average associations"}
+              key={"Associations"}
+              toggleChanged={props.toggleChanged}
+              value={props.numAssociations}
+              second={true}
+            />
+            <PriceDisplay
+              text={"Cost per association hour"}
+              key={"Cost per association hour"}
+              value={props.associationHourCost}
+              second={true}
             />
             <PriceDisplay
               text={"AWS Endpoint Fees"}

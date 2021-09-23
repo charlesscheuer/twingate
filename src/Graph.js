@@ -43,12 +43,8 @@ export default function Graph(props) {
 
   return (
     <div className="w-full rounded-md mb-8 transition duration-300 ease-in-out ">
-      <div
-        className={
-          "flex px-4 justify-between items-center h-12 cursor-pointer "
-        }
-      >
-        <h3 className="text-dark font-medium">Total Cost</h3>
+      <div className={"flex px-4 justify-between items-center h-12  "}>
+        <h3 className="text-dark font-medium">Total Monthly Cost</h3>
         <div
           style={{
             "::selection": {
@@ -73,10 +69,12 @@ export default function Graph(props) {
             minWidth: "116px",
           }}
           // transition={{ ease: "easeIn", duration: 1 }}
-          className="bg-aws h-12 rounded-tr-md rounded-br-md  flex justify-between items-center"
+          className="bg-aws h-[56px] rounded-tr-md rounded-br-md  flex justify-between items-center"
         >
-          <p className="ml-4 text-g-1">${Number(awsTotal).toLocaleString()}</p>
-          <img src={awsLogo} alt="the aws logo" className="h-8 mr-4" />
+          <p className="ml-4 text-g-1 text-lg">
+            ${Number(awsTotal).toLocaleString()}
+          </p>
+          <img src={awsLogo} alt="the aws logo" className="h-5 mr-3" />
         </motion.div>
 
         <motion.div
@@ -91,15 +89,15 @@ export default function Graph(props) {
             width: `${getTwingateWidth()}%`,
           }}
           // transition={{ ease: "easeIn", duration: 1 }}
-          className="bg-primary mt-2 h-12 rounded-tr-md rounded-br-md flex justify-between items-center"
+          className="bg-primary mt-2  h-[56px]  rounded-tr-md rounded-br-md flex justify-between items-center"
         >
-          <p className="ml-4 text-g-1">
+          <p className="ml-4 text-g-1 text-lg">
             ${Number(twingateTotal).toLocaleString()}
           </p>
           <img
             src={twingateLogo}
             alt="the twingate logo"
-            className="h-8 mr-4"
+            className="h-5 mr-3"
           />
         </motion.div>
       </div>

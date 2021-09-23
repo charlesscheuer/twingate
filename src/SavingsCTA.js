@@ -20,26 +20,11 @@ export default function SavingsCTA(props) {
     // 2 comma club: 1000000
     console.log("got dollar", totalMonthlySavings);
     if (totalMonthlySavings > 0) {
-      if (annualSavings > 1000000) {
-        return [
-          <p className="h-8 block md:hidden" style={{ fontSize: 32 }}>
-            {Number(annualSavings / 1000000).toLocaleString("en-US", {
-              style: "decimal",
-              maximumFractionDigits: 2,
-              minimumFractionDigits: 0,
-            })}
-            M
-          </p>,
-          <div className="h-8 hidden md:block font-sans">
-            <Odometer value={annualSavings} format="(,ddd)" />
-          </div>,
-        ];
-      } else
-        return (
-          <div className="h-8 hidden md:block font-sans">
-            <Odometer value={annualSavings} format="(,ddd)" />
-          </div>
-        );
+      return (
+        <div className="h-8 font-sans">
+          <Odometer value={annualSavings} format="(,ddd)" />
+        </div>
+      );
     } else {
       return (
         <div
@@ -54,16 +39,18 @@ export default function SavingsCTA(props) {
 
   // console.log(annualSavings, "is annual");
   return (
-    <div className="flex justify-between border-border border-t items-center px-4 py-4">
-      <div className="w-1/2 flex flex-col items-start">
-        <h3 className="text-dark font-medium">Total Annual Savings</h3>
+    <div className="flex flex-col md:flex-row justify-between border-border border-t items-center px-4 py-4">
+      <div className="w-full md:w-1/2 flex flex-col items-start">
+        <h3 className="text-dark font-medium">
+          Annual Savings <span className="text-g-3">(with Twingate)</span>
+        </h3>
         <div className="flex justify-start text-green font-bold font-sans items-start">
           ${getDollarAmount()}
         </div>
       </div>
-      <button className="rounded-xl bg-primary text-g-1 p-4 hover:bg-primaryHover font-medium transition-all duration-100 ease-in">
+      <button className="rounded-md w-full md:w-auto mt-8 md:mt-0  bg-primary text-g-1 p-4 hover:bg-primaryHover font-medium transition-all duration-100 ease-in">
         {" "}
-        Request a demo
+        Try Twingate Today
       </button>
     </div>
   );
