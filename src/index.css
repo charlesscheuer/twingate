@@ -17,6 +17,38 @@ code {
     monospace;
 }
 
+html {
+  --thumbSize: 18px;
+  --thumbHeight: 40px;
+  --thumbWidth: 24px;
+  --trackSize: 40px;
+  --thumbBg: #fff;
+  --trackBg: #eff0f3;
+  --progressBg: #262b5a;
+  --borderRadius: 0.375rem;
+  /* webkit progress workaround */
+  --webkitProgressPercent: 0%;
+}
+
+::-webkit-slider-runnable-track {
+  background: #eff0f3;
+  height: 40px;
+  cursor: pointer;
+}
+
+/*
+* 1. Set to 0 width and remove border for a slider without a thumb
+*/
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; /* 1 */
+  height: 40px;
+  background: #fff;
+  box-shadow: -100vw 0 0 100vw #262b5a;
+  border: 2px solid #262b5a; /* 1 */
+  border-radius: 0.375rem;
+}
+
 input[type="range"] {
   --thumbSize: 18px;
   --thumbHeight: 40px;
@@ -30,6 +62,13 @@ input[type="range"] {
   --webkitProgressPercent: 0%;
 }
 
+/* Progress */
+input[type="range"]::-moz-range-progress {
+  height: var(--trackSize);
+  border-radius: var(--borderRadius);
+  background-color: var(--progressBg);
+}
+
 input[type="range"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -40,39 +79,12 @@ input[type="range"] {
   margin: 0;
   padding: 0;
 }
-input[type="range"]:focus {
-  outline: none;
-}
 
-/* Thumb */
-input[type="range"]::-webkit-slider-thumb {
-  /* -webkit-appearance: none;
-  appearance: none;
-  width: var(--thumbWidth);
-  height: var(--thumbHeight);
-  background-color: var(--thumbBg);
-  border-radius: var(--borderRadius);
-  border: 2px solid var(--progressBg);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  margin-top: -4px;
-  cursor: pointer; */
-
-  -webkit-appearance: none;
-  width: 24px; /* 1 */
-  height: 40px;
-  background: #fff;
-  overflow: hidden;
-  box-shadow: -100vw 0 0 100vw var(--progressBg);
-  border: 4px solid var(--progressBg);
-  border-radius: 8px;
-  cursor: pointer;
-  /* margin-top: 11px; */
-}
 input[type="range"]::-moz-range-thumb {
   -moz-appearance: none;
   appearance: none;
   width: var(--thumbWidth);
-  height: var(--thumbHeight);
+  height: 32px;
   background-color: var(--thumbBg);
   border-radius: var(--borderRadius);
   margin-top: 20px;
@@ -91,40 +103,6 @@ input[type="range"]::-ms-thumb {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   margin-top: -4px;
   cursor: pointer;
-}
-
-/* Track */
-input[type="range"]::-webkit-slider-runnable-track {
-  height: 40px;
-  /* border-radius: px; */
-  width: 100%;
-  background-image: linear-gradient(
-    90deg,
-    var(--progressBg) var(--webkitProgressPercent),
-    var(--trackBg) var(--webkitProgressPercent)
-  );
-}
-input[type="range"]::-moz-range-track {
-  height: var(--trackSize);
-  margin-top: 100%;
-  background-color: var(--trackBg);
-  border-radius: var(--borderRadius);
-}
-input[type="range"]::-ms-track {
-  height: var(--trackSize);
-  background-color: var(--trackBg);
-  border-radius: var(--borderRadius);
-}
-
-/* Progress */
-input[type="range"]::-moz-range-progress {
-  height: var(--trackSize);
-  border-radius: var(--borderRadius);
-  background-color: var(--progressBg);
-}
-input[type="range"]::-ms-fill-lower {
-  height: var(--trackSize);
-  background-color: var(--progressBg);
 }
 
 .odometer.odometer-auto-theme,
