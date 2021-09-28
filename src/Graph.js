@@ -43,7 +43,9 @@ export default function Graph(props) {
 
   return (
     <div className="w-full rounded-md mb-8 transition duration-300 ease-in-out ">
-      <div className={"flex px-4 justify-between items-center h-12  "}>
+      <div
+        className={"flex px-4 justify-between items-center h-12 select-none "}
+      >
         <h3 className="text-dark font-medium">Total Monthly Cost</h3>
         <div
           style={{

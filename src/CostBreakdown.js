@@ -20,7 +20,7 @@ export default function CostBreakdown(props) {
         onClick={() => setIsOpen(!isOpen)}
       >
         <h3 className="text-dark font-medium select-none mr-2">
-          Cost Breakdown
+          AWS Cost Breakdown
         </h3>
 
         <div

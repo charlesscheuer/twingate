@@ -41,12 +41,16 @@ export default function SavingsCTA(props) {
   return (
     <div className="flex flex-col md:flex-row justify-between border-border border-t items-center px-4 py-4">
       <div className="w-full md:w-1/2 flex flex-col items-start">
-        <h3 className="text-dark font-medium">
-          Annual Savings <span className="text-g-3">(with Twingate)</span>
-        </h3>
-        <div className="flex justify-start text-green font-bold font-sans items-start">
-          ${getDollarAmount()}
-        </div>
+        {totalMonthlySavings > 0 && (
+          <h3 className="text-dark font-medium">
+            Annual Savings <span className="text-g-3">(with Twingate)</span>
+          </h3>
+        )}
+        {totalMonthlySavings > 0 && (
+          <div className="flex justify-start text-green font-bold font-sans items-start">
+            ${getDollarAmount()}
+          </div>
+        )}
       </div>
       <button className="rounded-md w-full md:w-auto mt-8 md:mt-0  bg-primary text-g-1 p-4 hover:bg-primaryHover font-medium transition-all duration-100 ease-in">
         {" "}
